@@ -58,4 +58,12 @@ public class User {
     public int hashCode() {
         return Objects.hashCode(id);
     }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
+    }
 }

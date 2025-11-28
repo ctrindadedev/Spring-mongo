@@ -1,6 +1,7 @@
 package com.ctrindadedev.mongodb_spring.resources;
 
 import com.ctrindadedev.mongodb_spring.dto.UserDTO;
+import com.ctrindadedev.mongodb_spring.models.Post;
 import com.ctrindadedev.mongodb_spring.models.User;
 import com.ctrindadedev.mongodb_spring.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,13 @@ public class UserResource {
         userService.updateUser(obj);
         return ResponseEntity.noContent().build();
     }
+
+    //POSTS
+    @GetMapping(value = "/{id}/posts") // A chave {id} indica que é uma variável na URL
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
+    }
+
 
 }
